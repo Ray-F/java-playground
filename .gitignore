@@ -1,10 +1,13 @@
 # IDE
 .idea/*
 
-# Build Outputs
+# Build outputs
 bin/*
 output/*
 out/*
 production/*
 prod/*
 build/*
+
+# Caches
+.gradle/*
