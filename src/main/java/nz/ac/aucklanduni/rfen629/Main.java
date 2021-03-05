@@ -11,14 +11,13 @@ import nz.ac.aucklanduni.rfen629.util.Server;
 public class Main {
 
     public static void main(String[] args) {
-        Main main = new Main();
-        main.startServer();
+        startServer();
     }
 
     /**
      * Starts the server.
      */
-    public void startServer() {
+    public static void startServer() {
         Server server = new Server("Raymond Feng");
 
         Scanner scanner = new Scanner(System.in);
@@ -29,6 +28,7 @@ public class Main {
         // Allow user to stop the input
         while (true) {
             System.out.print("Enter any command here (e.g. stop): ");
+
             if (scanner.hasNext()) {
                 if (Arrays.asList(synExit).contains(scanner.next())) {
                     server.exit(0);
