@@ -1,0 +1,10 @@
+# IDE
+.idea/*
+
+# Build Outputs
+bin/*
+output/*
+out/*
+production/*
+prod/*
+build/*
