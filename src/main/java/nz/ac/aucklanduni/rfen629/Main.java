@@ -1,15 +1,9 @@
 package nz.ac.aucklanduni.rfen629;
 
-import java.io.File;
-import java.io.IOException;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.time.temporal.TemporalAccessor;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Scanner;
-import java.util.logging.FileHandler;
-import java.util.logging.SimpleFormatter;
+
+import nz.ac.aucklanduni.rfen629.util.Server;
 
 /**
  * @author Raymond Feng (rfen629@aucklanduni.ac.nz)

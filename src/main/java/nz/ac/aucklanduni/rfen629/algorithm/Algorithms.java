@@ -1,4 +1,4 @@
-package nz.ac.aucklanduni.rfen629;
+package nz.ac.aucklanduni.rfen629.algorithm;
 
 public class Algorithms {
 

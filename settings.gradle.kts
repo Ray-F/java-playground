@@ -1,2 +1,2 @@
-rootProject.name = "gradle-playground"
+rootProject.name = "playground"
 

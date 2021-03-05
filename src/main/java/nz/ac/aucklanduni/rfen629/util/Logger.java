@@ -1,18 +1,18 @@
-package nz.ac.aucklanduni.rfen629;
+package nz.ac.aucklanduni.rfen629.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.time.temporal.TemporalAccessor;
-import java.util.Date;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
+
+import nz.ac.aucklanduni.rfen629.Main;
 
 import static java.util.logging.Level.INFO;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Level.WARNING;
-import static nz.ac.aucklanduni.rfen629.Constants.OUTPUT;
+import static nz.ac.aucklanduni.rfen629.util.Constants.OUTPUT;
 
 /**
  * A logger class for logging anything produced by this application.
@@ -26,31 +26,35 @@ public class Logger {
 
     private static File logFile;
 
+
     // Set the logger format to single lines
     static {
         System.setProperty("java.util.logging.SimpleFormatter.format", "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS [%4$s] %5$s%6$s%n");
         logger.setUseParentHandlers(false);
 
         try {
-            logFile = setupLogFile(new Date().getTime());
+            logFile = setupLogFile(LocalDateTime.now());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static File setupLogFile(Long runtime) throws IOException {
+    /**
+     * Creates a log file.
+     */
+    private static File setupLogFile(LocalDateTime runtime) throws IOException {
         String logsDir = OUTPUT + "/logs";
 
         // Make directories if they are not made
         new File(logsDir).mkdirs();
 
         // Set file output path and set to simple no-markup formatting (i.e., what is logged to console is saved to file)
-        String datetimeStr = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).format((TemporalAccessor) new Date(runtime));
-
+        String datetimeStr = DateTimeFormatter.ISO_DATE_TIME.format(runtime);
         String filePath = logsDir + "/SERVER_LOG_" + datetimeStr + ".log";
 
         FileHandler fileHandler = new FileHandler(filePath);
         fileHandler.setFormatter(new SimpleFormatter());
+        logger.addHandler(fileHandler);
 
         return new File(filePath);
     }
@@ -81,6 +85,13 @@ public class Logger {
      */
     public static void logError(String message, Exception cause) {
         logger.log(SEVERE, message, cause);
+    }
+
+    /**
+     * Returns the log file.
+     */
+    public static File getLogFile() {
+        return logFile;
     }
 
 }

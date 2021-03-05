@@ -1,4 +1,4 @@
-package nz.ac.aucklanduni.rfen629;
+package nz.ac.aucklanduni.rfen629.util;
 
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
