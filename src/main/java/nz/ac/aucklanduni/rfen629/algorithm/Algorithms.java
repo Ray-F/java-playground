@@ -12,4 +12,11 @@ public class Algorithms {
         return (remainder == 0) ? b : gcdEuclidean(b, remainder);
     }
 
+    public static int sum(int a, int b) {
+        int xor = a ^ b;
+        int and = a & b;
+
+        return (and == 0) ? xor : sum(and << 1, xor);
+    }
+
 }
